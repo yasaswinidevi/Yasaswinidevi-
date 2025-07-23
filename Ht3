@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Netflix Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>NETFLIX</h1>
+  </header>
+
+  <main>
+    <h2>Popular Movies</h2>
+    <div class="movie-grid">
+      <div class="movie" onclick="showDetails('Inception', 'A mind-bending thriller by Christopher Nolan.')">
+        <img src="https://via.placeholder.com/200x300?text=Inception" alt="Inception">
+        <p>Inception</p>
+      </div>
+      <div class="movie" onclick="showDetails('Stranger Things', 'A sci-fi series with supernatural mysteries.')">
+        <img src="https://via.placeholder.com/200x300?text=Stranger+Things" alt="Stranger Things">
+        <p>Stranger Things</p>
+      </div>
+      <div class="movie" onclick="showDetails('The Dark Knight', 'Batman faces the Joker in Gotham City.')">
+        <img src="https://via.placeholder.com/200x300?text=The+Dark+Knight" alt="The Dark Knight">
+        <p>The Dark Knight</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Movie Detail Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="movie-title">Movie Title</h2>
+      <p id="movie-description">Movie Description</p>
+      <button onclick="playMovie()">Play</button>
+    </div>
+  </div>
+
+  <!-- Playback Screen -->
+  <div id="player" class="player-screen">
+    <h2>Now Playing...</h2>
+    <p id="now-playing"></p>
+    <button onclick="closePlayer()">Back to Home</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
