@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yasaswinidevi Yakkala - Personal Homepage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #0066cc;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .social-links a {
+      margin-right: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Yasaswinidevi Yakkala</h1>
+
+  <p><strong>About Me:</strong> <br>
+  Hello! I'm Yasaswinidevi, a passionate learner and technology enthusiast. I enjoy exploring software development, user experience design, and the intersection of creativity and technology. I'm always looking to expand my skills and connect with like-minded individuals.</p>
+
+  <h2>Contact & Social Links</h2>
+  <div class="social-links">
+    <p>
+      📧 Email: <a href="mailto:youremail@example.com">youremail@example.com</a><br>
+      🔗 LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a><br>
+      🐦 Twitter: <a href="https://twitter.com/yourhandle" target="_blank">@yourhandle</a><br>
+      💻 GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
+    </p>
+  </div>
+
+</body>
+</html>
