@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Navigation Demo</title>
+  <style>
+    html { scroll-behavior: smooth; } /* native smooth scroll support */ :contentReference[oaicite:1]{index=1}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 10px;
+      justify-content: center;
+    }
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      padding: 10px 20px;
+      transition: background 0.3s;
+    }
+    nav a.active,
+    nav a:hover {
+      background: #555;
+      color: #fff;
+    }
+    section {
+      padding: 80px 20px 40px;
+      min-height: 100vh;
+    }
+    /* distinct background colors for clarity */
+    #home    { background: #f5f5f5; }
+    #about   { background: #e5e5e5; }
+    #skills  { background: #d5d5d5; }
+    #projects{ background: #c5c5c5; }
+    #contact { background: #b5b5b5; }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" tabindex="0"><h1>Home</h1></section>
+  <section id="about" tabindex="0"><h1>About</h1></section>
+  <section id="skills" tabindex="0"><h1>Skills</h1></section>
+  <section id="projects" tabindex="0"><h1>Projects</h1></section>
+  <section id="contact" tabindex="0"><h1>Contact</h1></section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const navbar = document.getElementById('navbar');
+      const links = document.querySelectorAll('#navbar a');
+      const sections = Array.from(links).map(link => document.querySelector(link.getAttribute('href')));
+
+      links.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(link.getAttribute('href'));
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.focus({ preventScroll: true });
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          history.pushState(null, '', link.getAttribute('href'));
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        const offset = window.pageYOffset + navbar.offsetHeight + 20;
+        sections.forEach((sec, i) => {
+          if (offset >= sec.offsetTop && offset < sec.offsetTop + sec.offsetHeight) {
+            links.forEach(l => l.classList.remove('active'));
+            links[i].classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+ 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio with Smooth Scrolling</title>
+  <style>
+    html {
+      scroll-behavior: smooth; /* native smooth scrolling */
+    }
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #333;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 10px;
+      justify-content: center;
+    }
+    nav a {
+      color: #eee;
+      text-decoration: none;
+      padding: 10px 15px;
+      transition: background 0.3s;
+    }
+    nav a.active,
+    nav a:hover {
+      background: #555;
+      color: #fff;
+    }
+    section {
+      min-height: 100vh;
+      padding: 100px 20px 20px;
+    }
+    #about { background: #f8f8f8;}
+    #projects { background: #e8e8e8;}
+    #contact { background: #d8d8d8;}
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about" tabindex="0">
+    <h1>About Me</h1>
+    <!-- content -->
+  </section>
+
+  <section id="projects" tabindex="0">
+    <h1>Projects</h1>
+    <!-- content -->
+  </section>
+
+  <section id="contact" tabindex="0">
+    <h1>Contact</h1>
+    <!-- content -->
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const links = document.querySelectorAll('nav a[href^="#"]');
+      const sections = Array.from(links).map(link => document.querySelector(link.hash));
+
+      links.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(link.hash);
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.focus({ preventScroll: true });
+          history.pushState(null, '', link.hash); 
+        });
+      });
+
+      window.addEventListener('scroll', () => {
+        const scrollY = window.pageYOffset;
+        sections.forEach((sec, idx) => {
+          if (scrollY >= sec.offsetTop - nav.offsetHeight - 50) {
+            links.forEach(l => l.classList.remove('active'));
+            links[idx].classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction Toggle Demo</title>
+  <style>
+    .intro-section {
+      max-width: 600px;
+      margin: 50px auto;
+      font-family: sans-serif;
+      line-height: 1.6;
+    }
+    #introBtn {
+      margin-top: 15px;
+      padding: 8px 16px;
+      font-size: 1em;
+      background-color: #0077cc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    #introBtn:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="intro" class="intro-section">
+    <h2>Hello, I’m Rathnam</h2>
+    <p>
+      I am a passionate web developer based in Eluru. I build responsive and accessible websites that delight users.
+      <span id="intro-more" class="more-text" hidden>
+        With experience in JavaScript, CSS, modern frameworks like React and Vue, I continuously refine my craft.
+        I love working on open‑source projects, and in my free time, I enjoy hiking and photography.
+      </span>
+    </p>
+    <button id="introBtn"
+            aria-expanded="false"
+            aria-controls="intro-more">
+      Read More
+    </button>
+  </section>
+
+  <script>
+    document.getElementById('introBtn').addEventListener('click', function() {
+      const content = document.getElementById('intro-more');
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+
+      this.setAttribute('aria-expanded', String(!expanded));
+
+      if (expanded) {
+        content.hidden = true;
+        this.textContent = 'Read More';
+      } else {
+        content.hidden = false;
+        this.textContent = 'Read Less';
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Projects</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: #fafafa;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .project-card h3 {
+      margin-top: 0;
+    }
+    .project-card .details {
+      display: none;
+      margin-top: 10px;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .project-card button {
+      margin-top: 15px;
+      padding: 8px 14px;
+      background: #0077cc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .project-card button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="projects" class="projects">
+    <!-- Cards will be inserted here -->
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const projectsData = [
+        {
+          title: 'Project A',
+          summary: 'A short intro to Project A.',
+          description: 'Full description of Project A, what I built, why, and challenges faced.',
+          tech: 'JavaScript, HTML, CSS',
+          link: 'https://github.com/yourname/projectA'
+        },
+        {
+          title: 'Project B',
+          summary: 'A short intro to Project B.',
+          description: 'In Project B I focused on performance optimization and responsive design.',
+          tech: 'React, Node.js, MongoDB',
+          link: 'https://github.com/yourname/projectB'
+        }
+        // add more project objects as needed
+      ];
+
+      const container = document.getElementById('projects');
+
+      projectsData.forEach((proj, idx) => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.innerHTML = `
+          <h3>${proj.title}</h3>
+          <p>${proj.summary}</p>
+          <div class="details" id="details-${idx}">
+            <p><strong>Description:</strong> ${proj.description}</p>
+            <p><strong>Technologies:</strong> ${proj.tech}</p>
+            <p><a href="${proj.link}" target="_blank">View Repository</a></p>
+          </div>
+          <button aria-controls="details-${idx}" aria-expanded="false">View Details</button>
+        `;
+
+        const button = card.querySelector('button');
+        const details = card.querySelector('.details');
+
+        button.addEventListener('click', () => {
+          const isExpanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!isExpanded));
+          button.textContent = isExpanded ? 'View Details' : 'Hide Details';
+          details.style.display = isExpanded ? 'none' : 'block';
+        });
+
+        container.appendChild(card);
+      });
+    });
+  </script>
+
+</body>
+</html>
